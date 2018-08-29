@@ -1,0 +1,111 @@
+# LaTeX snippets by Omar Sosa <omarfsosa@gmail.com>
+# Last update: <17-07-2018 09:34:51 omarfsosa>
+
+#math snippets {{{
+snippet com "commutator" i
+\left[$1, $2\right]
+endsnippet
+
+snippet mm "in-line math"
+$$1$
+endsnippet
+
+snippet fr "fraction" i
+\frac{$1}{$2}
+endsnippet
+
+snippet mc "mathcal" i
+\mathcal{$1}
+endsnippet
+
+snippet mr "mathrm" i
+\mathrm{$1}
+endsnippet
+
+snippet mb "mathbb" i
+\mathbb{$1}
+endsnippet
+
+snippet uu "subindex" i
+_{$1}
+endsnippet
+
+snippet up "exponent" i
+^{$1}
+endsnippet
+
+snippet sq "square root" i
+\sqrt{$1}
+endsnippet
+
+snippet mf "mathbf" i
+\mathbf{$1}
+endsnippet
+
+#}}}
+#text snippets{{{
+snippet em "emphasised text"
+\emph{$1}
+endsnippet
+
+snippet bf "bold"
+\textbf{$1}
+endsnippet
+#}}}
+# enviroment snippets {{{
+snippet glo "glossary entry" b!
+\newglossaryentry{$1}
+{
+	name = $1
+	description = {$2}
+}
+
+endsnippet
+
+snippet al "align environmet" b!
+\begin{${1:align}}
+	\label{$2}
+	$3
+\end{$1}
+
+endsnippet
+
+snippet sec "section" b!
+\section{${1:New section}}
+\label{$1}
+$2
+
+% END OF SECTION $1
+
+endsnippet
+snippet ch "chapter" b!
+\chapter{${1:New chapter}}
+\label{$1}
+$2
+
+% END OF CHAPTER $1
+
+endsnippet
+
+snippet cc "citation" i
+\cite{$1}
+endsnippet
+
+snippet rf "eqref" i
+\eqref{$1}
+endsnippet
+
+snippet cf "cref" i
+\cref{$1}
+endsnippet
+
+#}}}
+#MISCELANEOUS {{{
+snippet todo "task to do" b
+% TODO: ${1:description} %% `!v strftime("%c")` %%
+
+endsnippet
+#}}}
+
+
+
