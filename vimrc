@@ -1,17 +1,18 @@
 "vimrc by Omar Sosa <omarfsosa@gmail.com>
 " Inspired by --A Good Vimrc-- by Douglas Black
-" Last update: <28-08-2018 15:47:13 omarsosa>
+" Last update: <03-09-2018 19:00:08 omarfsosa>
 
 
 " Colors, theme and font {{{
 syntax enable           " enable syntax processing
 set background=dark
-colorscheme gruvbox
+colorscheme solarized8
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-default-dark      " needs to be installed
 highlight Comment cterm=italic      
 set termguicolors
-set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+"set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+set guifont=Roboto\ Mono\ Thin\ for\ Powerline:h15
 " }}}
 " Misc {{{
 "make backspace behave normaly
