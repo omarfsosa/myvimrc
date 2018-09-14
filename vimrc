@@ -1,26 +1,25 @@
 "vimrc by Omar Sosa <omarfsosa@gmail.com>
 " Inspired by --A Good Vimrc-- by Douglas Black
-" Last update: <03-09-2018 19:00:08 omarfsosa>
+" Last update: <13-09-2018 16:52:22 omarsosa>
 
 
 " Colors, theme and font {{{
 syntax enable           " enable syntax processing
 set background=dark
-colorscheme solarized8
-"let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme badwolf
 "colorscheme base16-default-dark      " needs to be installed
-highlight Comment cterm=italic      
-set termguicolors
+"highlight Comment cterm=italic      
+"set termguicolors
 "set guifont=Meslo\ LG\ S\ for\ Powerline:h14
-set guifont=Roboto\ Mono\ Thin\ for\ Powerline:h15
+"set guifont=Roboto\ Mono\ Thin\ for\ Powerline:h15
 " }}}
 " Misc {{{
 "make backspace behave normaly
 set backspace=indent,eol,start
 "to copy paste like normal people do:
 set clipboard=unnamed   
-" enable the mouse
-set mouse=a
+" enable the mouse, copy/paste doesn't work nice if mouse is enabled.
+"set mouse=a 
 set spelllang=en
 set spellfile=$HOME/.vim/spell/en.utf-8.add
 " set spliting windows to the right / bottom by default
@@ -54,55 +53,13 @@ set hlsearch            " highlight all matches
 " }}}
 " Folding {{{
 "set foldmethod=marker
-" FoldText function taken from https://coderwall.com/p/usd_cw/a-pretty-vim-foldtext-function
 
-set foldmethod=marker
+set foldenable
+set foldmethod=syntax
+set foldlevelstart=10
+nnoremap <Space> za
+vnoremap <Space> za
 
-if has("folding")
-  set foldenable        " enable folding
-  set foldmethod=syntax " fold based on syntax highlighting
-  set foldlevelstart=99 " start editing with all folds open
-
-  " toggle folds
-  nnoremap <Space> za
-  vnoremap <Space> za
-
-  set foldtext=FoldText()
-  function! FoldText()
-    let l:lpadding = &fdc
-    redir => l:signs
-      execute 'silent sign place buffer='.bufnr('%')
-    redir End
-    let l:lpadding += l:signs =~ 'id=' ? 2 : 0
-
-    if exists("+relativenumber")
-      if (&number)
-        let l:lpadding += max([&numberwidth, strlen(line('$'))]) + 1
-      elseif (&relativenumber)
-        let l:lpadding += max([&numberwidth, strlen(v:foldstart - line('w0')), strlen(line('w$') - v:foldstart), strlen(v:foldstart)]) + 1
-      endif
-    else
-      if (&number)
-        let l:lpadding += max([&numberwidth, strlen(line('$'))]) + 1
-      endif
-    endif
-
-    " expand tabs
-    let l:start = substitute(getline(v:foldstart), '\t', repeat(' ', &tabstop), 'g')
-    let l:end = substitute(substitute(getline(v:foldend), '\t', repeat(' ', &tabstop), 'g'), '^\s*', '', 'g')
-
-    let l:info = ' (' . (v:foldend - v:foldstart) . ')'
-    let l:infolen = strlen(substitute(l:info, '.', 'x', 'g'))
-    let l:width = winwidth(0) - l:lpadding - l:infolen
-
-    let l:separator = ' … '
-    let l:separatorlen = strlen(substitute(l:separator, '.', 'x', 'g'))
-    let l:start = strpart(l:start , 0, l:width - strlen(substitute(l:end, '.', 'x', 'g')) - l:separatorlen)
-    let l:text = l:start . ' … ' . l:end
-
-    return l:text . repeat(' ', l:width - strlen(substitute(l:text, ".", "x", "g"))) . l:info
-  endfunction
-endif
 " }}}
 " Cursor navigation {{{
 nnoremap <C-J> <C-W><C-J>
@@ -159,9 +116,11 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'lervag/vimtex'
-Plug 'jewes/Conque-Shell'
+Plug 'tpope/vim-surround'
+"Plug 'jewes/Conque-Shell'
+Plug 'nvie/vim-flake8'
 Plug 'SirVer/ultisnips'
-Plug 'rafi/awesome-vim-colorschemes'
+"Plug 'rafi/awesome-vim-colorschemes'
 "Plug 'Konfekt/fastfold'
 call plug#end()
 " }}}
